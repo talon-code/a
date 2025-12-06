@@ -1,7 +1,9 @@
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class chess {
 
+    Scanner scanner = new Scanner(System.in);
     private String ref = "abcdefghijklmnopqrstuvwxyz";
 
     private String a = "r k b q k b k r";
@@ -16,19 +18,57 @@ public class chess {
 
 
     ArrayList<Piece> pieces = new ArrayList<Piece>();
+    private int startRow;
+    private int startCol;
+    private int endCol;
+    private int endRow;
 
     public chess() {
         initializePieces();
         print();
+        while(pieces.size() > 2){
+            movePiece(askWhite());
+            movePiece(askBlack());
+        }
     }
 
-    public void tonum(String first, String second) {
-        
+    public void movePiece(String str) {
+        int n = 0;
+        startCol = tonum(str.substring(0,1));
+        startRow = stringToInt(str.substring(1,2));
+        endCol = tonum(str.substring(3,4));
+        endRow = stringToInt(str.substring(4,5));
 
+        while(pieces.size() > n) {
+            while()
+            n++;
+        }
+    }
+
+    public int stringToInt(String n){
+        int ref = 987654321;
+        while(n.indexOf(ref % 10) != -1){
+            ref /= 10;
+        }
+        return ref % 10;
+    }
+
+    public int tonum(String let) { 
+        return ref.indexOf(let) + 1;
     }
 
     public String tolet(int num) {
         return ref.substring(num - 1, num);
+    }
+
+    public String askWhite() {
+        System.out.println("White to move (col|row col|row): ");
+        return scanner.nextLine();
+    }
+
+    public String askBlack() {
+        System.out.println("Black to move (col|row col|row): ");
+        return scanner.nextLine();
     }
 
     public void initializePieces() {
