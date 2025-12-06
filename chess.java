@@ -15,20 +15,23 @@ public class chess {
     private String g = "P P P P P P P P";
     private String h = "R K B Q K B K R";
 
-
-
     ArrayList<Piece> pieces = new ArrayList<Piece>();
+    ArrayList<Piece> captured = new ArrayList<Piece>();
+
     private int startRow;
     private int startCol;
     private int endCol;
     private int endRow;
+    private boolean white = true;
 
     public chess() {
         initializePieces();
         print();
         while(pieces.size() > 2){
             movePiece(askWhite());
+            print();
             movePiece(askBlack());
+            print();
         }
     }
 
@@ -38,11 +41,31 @@ public class chess {
         startRow = stringToInt(str.substring(1,2));
         endCol = tonum(str.substring(3,4));
         endRow = stringToInt(str.substring(4,5));
+        boolean found = false;
 
-        while(pieces.size() > n) {
-            while()
+        if(!isLegal(startCol, startRow, endCol, endRow))
+            
+        //delete captured piece
+        while(pieces.size() > n && !found) {
+            Piece p = pieces.get(n);
+            if(p.getCol() == endCol && p.getRow() == endRow){
+                captured.add(p);
+                pieces.remove(pieces.indexOf(p));
+            }
             n++;
         }
+
+        //change location of piece
+        while(pieces.size() > n && !found) {
+            Piece p = pieces.get(n);
+            if(p.getCol() == startCol && p.getRow() == startRow){
+                found = true;
+                p.setCol(endCol);
+                p.setRow(endRow);
+            }
+            n++;
+        }
+
     }
 
     public int stringToInt(String n){
@@ -63,11 +86,13 @@ public class chess {
 
     public String askWhite() {
         System.out.println("White to move (col|row col|row): ");
+        white = true;
         return scanner.nextLine();
     }
 
     public String askBlack() {
         System.out.println("Black to move (col|row col|row): ");
+        white = false;
         return scanner.nextLine();
     }
 
