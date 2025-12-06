@@ -2,10 +2,33 @@ import java.util.ArrayList;
 
 public class chess {
 
+    private String ref = "abcdefghijklmnopqrstuvwxyz";
+
+    private String a = "r k b q k b k r";
+    private String b = "p p p p p p p p";
+    private String c = "_ _ _ _ _ _ _ _";
+    private String d = "_ _ _ _ _ _ _ _";
+    private String e = "_ _ _ _ _ _ _ _";
+    private String f = "_ _ _ _ _ _ _ _";
+    private String g = "P P P P P P P P";
+    private String h = "R K B Q K B K R";
+
+
+
     ArrayList<Piece> pieces = new ArrayList<Piece>();
 
     public chess() {
         initializePieces();
+        print();
+    }
+
+    public void tonum(String first, String second) {
+        
+
+    }
+
+    public String tolet(int num) {
+        return ref.substring(num - 1, num);
     }
 
     public void initializePieces() {
@@ -52,5 +75,14 @@ public class chess {
 
     }
 
-    
+    public void print() {
+        System.out.println(a);
+         System.out.println(b);
+          System.out.println(c);
+           System.out.println(d);
+            System.out.println(e);
+             System.out.println(f);
+              System.out.println(g);
+               System.out.println(h);
+    }
 }
