@@ -165,17 +165,32 @@ public class chess {
 
     public void print() {
         //string a
-        int n = 0;
-        while(n < pieces.size()){
-
+        int rowInCol = 0;
+        int character = 1;
+        int count = 0;
+        while(rowInCol < pieces.size()){
+            while(character <= 8){
+                while(count < 64){
+                    Piece p = pieces.get(count);
+                    if(p.getCol() == character && p.getRow() == rowInCol){
+                        a = a + setType(p.getType)
+                    }
+                }
+                
+                count++;
+                character++;
+            }
+            System.out.println("");
+            character = 0;
+            rowInCol++;
         }
         System.out.println(a);
-         System.out.println(b);
-          System.out.println(c);
-           System.out.println(d);
-            System.out.println(e);
-             System.out.println(f);
-              System.out.println(g);
-               System.out.println(h);
+        System.out.println(b);
+        System.out.println(c);
+        System.out.println(d);
+        System.out.println(e);
+        System.out.println(f);
+        System.out.println(g);
+        System.out.println(h);
     }
 }
