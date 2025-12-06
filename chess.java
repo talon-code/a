@@ -6,15 +6,6 @@ public class chess {
     Scanner scanner = new Scanner(System.in);
     private String ref = "abcdefghijklmnopqrstuvwxyz";
 
-    private String a = "r k b q k b k r";
-    private String b = "p p p p p p p p";
-    private String c = "_ _ _ _ _ _ _ _";
-    private String d = "_ _ _ _ _ _ _ _";
-    private String e = "_ _ _ _ _ _ _ _";
-    private String f = "_ _ _ _ _ _ _ _";
-    private String g = "P P P P P P P P";
-    private String h = "R K B Q K B K R";
-
     ArrayList<Piece> pieces = new ArrayList<Piece>();
     ArrayList<Piece> captured = new ArrayList<Piece>();
 
