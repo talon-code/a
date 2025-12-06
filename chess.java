@@ -43,7 +43,7 @@ public class chess {
         endRow = stringToInt(str.substring(4,5));
         boolean found = false;
 
-        if(!isLegal(startCol, startRow, endCol, endRow))
+        if(!isLegal(startCol, startRow, endCol, endRow)){
             
         //delete captured piece
         while(pieces.size() > n && !found) {
@@ -65,7 +65,15 @@ public class chess {
             }
             n++;
         }
+        }
+    }
 
+    public boolean isLegal(int sc, int sr, int ec, int er){
+        return true;
+
+
+
+        
     }
 
     public int stringToInt(String n){
