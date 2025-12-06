@@ -55,7 +55,7 @@ public class chess {
             n++;
         }
 
-        n=0;
+        n = 0;
 
         //change location of piece
         while(pieces.size() > n && !found) {
