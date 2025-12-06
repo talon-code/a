@@ -43,10 +43,13 @@ public class chess {
         int n = 0;
         startCol = tonum(str.substring(0,1));
         startRow = stringToInt(str.substring(1,2));
-        System.out.println(startRow);
         endCol = tonum(str.substring(3,4));
         endRow = stringToInt(str.substring(4,5));
-        System.out.println(endRow);
+
+        System.out.println("startCol" + startCol);
+        System.out.println("startRow" + startRow);
+        System.out.println("endCol" + endCol);
+        System.out.println("endRow" + endRow);
         boolean found = false;
 
         if(isLegal(startCol, startRow, endCol, endRow)){
@@ -87,7 +90,7 @@ public class chess {
     }
 
     public int stringToInt(String n){
-        String ref = "123456789";
+        String ref = "0123456789";
         return ref.indexOf(n);
     }
 
