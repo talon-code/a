@@ -27,7 +27,7 @@ public class chess {
     public chess() {
         initializePieces();
         print();
-        while(pieces.size() > 2){
+        while(captured.size() < 30){
             movePiece(askWhite());
             print();
             movePiece(askBlack());
@@ -35,6 +35,10 @@ public class chess {
         }
     }
 
+    //will change location in array of piece moved
+    //delete captured piece from array
+    //replace previous location with underscore
+    //ask if the move is legal
     public void movePiece(String str) {
         int n = 0;
         startCol = tonum(str.substring(0,1));
@@ -46,7 +50,7 @@ public class chess {
         if(!isLegal(startCol, startRow, endCol, endRow)){
             
         //delete captured piece
-        while(pieces.size() > n && !found) {
+        while(pieces.size() > n) {
             Piece p = pieces.get(n);
             if(p.getCol() == endCol && p.getRow() == endRow){
                 captured.add(p);
@@ -65,6 +69,10 @@ public class chess {
             }
             n++;
         }
+        //put underscore at previous location
+        pieces.add(new Piece(0, 0, startCol, startRow));
+        } else {
+            System.out.println("Illegal move");
         }
     }
 
@@ -73,7 +81,7 @@ public class chess {
 
 
 
-        
+
     }
 
     public int stringToInt(String n){
@@ -105,7 +113,7 @@ public class chess {
     }
 
     public void initializePieces() {
-        //1 = pawn, 2 = bishop, 3 = knight, 4 = rook, 5 = queen, 6 = king
+        //0 = US, 1 = pawn, 2 = bishop, 3 = knight, 4 = rook, 5 = queen, 6 = king
         //1 = white, 2 = black
         //1 = row 1, 2 = row 2...
         //1 = col a, 2 = col b...
@@ -143,12 +151,24 @@ public class chess {
         //kings
         pieces.add(new Piece(6, 1, 1, 5));
         pieces.add(new Piece(6, 2, 8, 5));
-
-
-
+        //underscores
+        int i = 3;
+        n = 1;
+        while(1 < 7){
+            while(n < 9){
+                pieces.add(new Piece(0, 0, i, n));
+                n++;
+            }
+        i++;
+        }
     }
 
     public void print() {
+        //string a
+        int n = 0;
+        while(n < pieces.size()){
+
+        }
         System.out.println(a);
          System.out.println(b);
           System.out.println(c);
