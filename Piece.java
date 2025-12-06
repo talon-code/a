@@ -19,6 +19,14 @@ public class Piece {
         return row;
     }
 
+    public int getType(){
+        return type;
+    }
+
+    public int getColor(){
+        return color;
+    }
+
     public void setCol(int c) {
         this.collumn = c;
     }
