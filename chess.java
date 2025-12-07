@@ -37,10 +37,6 @@ public class chess {
         endCol = tonum(str.substring(3,4));
         endRow = stringToInt(str.substring(4,5));
 
-        System.out.println("startCol" + startCol);
-        System.out.println("startRow" + startRow);
-        System.out.println("endCol" + endCol);
-        System.out.println("endRow" + endRow);
         boolean found = false;
 
         if(isLegal(startCol, startRow, endCol, endRow)){
@@ -75,11 +71,60 @@ public class chess {
     }
 
     public boolean isLegal(int sc, int sr, int ec, int er){
-        return true;
+        Piece p = findPiece(sc, sr);
+        if(sc > 8 || sc < 0)
+            return false;
+        if(ec > 8 || ec < 0)
+            return false;
+        if(sr > 8 || sr < 0)
+            return false;
+        if(er > 8 || er < 0)
+            return false;
+
+        //pawn
+        if(p.getType() == 1){
+            if(sc - ec == 0 && sr + 1 == er)
+                return true;
+            if(sr == 2 && sr + 2 == er)
+                return true;
+            if(Math.abs(sc - ec) == 1 && er - sr == 1 && getType(findPiece(ec, er)) != 0)
+                return true;
+            return false;
+        }
+        //bishop
+        if(p.getType() == 2){
+            if(Math.abs(sc - ec) == Math.abs(sr - er))
+                return true;
+            return false;
+        }
+        //knight
+        if(p.getType() == 3){
+            
+        }
+        //rook
+        if(p.getType() == 4){
+            
+        }
+        //queen
+        if(p.getType() == 5){
+            
+        }
+        //king
+        if(p.getType() == 6){
+            
+        }
 
 
 
 
+    }
+
+    public Piece findPiece(String col, String row){
+        for(i = 0; i < pieces.size(); i++){
+            Piece p = pieces.get(i);
+            if(p.getCol() == col && p.getRow() == row)
+                return p;
+        }
     }
 
     public int stringToInt(String n){
