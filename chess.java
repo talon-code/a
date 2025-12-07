@@ -72,6 +72,8 @@ public class chess {
 
     public boolean isLegal(int sc, int sr, int ec, int er){
         Piece p = findPiece(sc, sr);
+
+        //within boundaries
         if(sc > 8 || sc < 0)
             return false;
         if(ec > 8 || ec < 0)
@@ -91,6 +93,7 @@ public class chess {
                 return true;
             return false;
         }
+
         //bishop
         if(p.getType() == 2){
             if(Math.abs(sc - ec) == Math.abs(sr - er))
@@ -99,19 +102,32 @@ public class chess {
         }
         //knight
         if(p.getType() == 3){
-            
+            if((Math.abs(sc - ec) == 2 && Math.abs(sr - er) == 1) || (Math.abs(sr - er) == 2 && Math.abs(sc - ec) == 1))
+                return true;
+            return false;
         }
+
         //rook
         if(p.getType() == 4){
-            
+            if(sc - ec == 0 || sr - er == 0)
+                return true;
+            return false;
         }
         //queen
         if(p.getType() == 5){
-            
+            if(sc - ec == 0 || sr - er == 0)
+                return true;
+            if(Math.abs(sc - ec) == Math.abs(sr - er))
+                return true;
+
         }
         //king
         if(p.getType() == 6){
-            
+            if(Math.abs(sc - ec) == 1 && Math.abs(sr - er) <= 1)
+                return true;
+            if(sc == ec && Math.abs(sr - er) == 1)
+                return true;
+            return false;
         }
 
 
