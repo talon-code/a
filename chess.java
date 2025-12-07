@@ -73,6 +73,11 @@ public class chess {
     public boolean isLegal(int sc, int sr, int ec, int er){
         Piece p = findPiece(sc, sr);
 
+        if(p.getType() == 0)
+            return false;
+        if((p.getColor() == 1 && !white) || (p.getColor() != 1 && white))
+            return false;
+
         //within boundaries
         if(sc > 8 || sc < 0)
             return false;
@@ -89,29 +94,25 @@ public class chess {
                 return true;
             if(sr == 2 && sr + 2 == er)
                 return true;
-            if(Math.abs(sc - ec) == 1 && er - sr == 1 && getType(findPiece(ec, er)) != 0)
+            if(Math.abs(sc - ec) == 1 && er - sr == 1 && findPiece(ec, er).getType() != 0)
                 return true;
-            return false;
         }
 
         //bishop
         if(p.getType() == 2){
             if(Math.abs(sc - ec) == Math.abs(sr - er))
                 return true;
-            return false;
         }
         //knight
         if(p.getType() == 3){
             if((Math.abs(sc - ec) == 2 && Math.abs(sr - er) == 1) || (Math.abs(sr - er) == 2 && Math.abs(sc - ec) == 1))
                 return true;
-            return false;
         }
 
         //rook
         if(p.getType() == 4){
             if(sc - ec == 0 || sr - er == 0)
                 return true;
-            return false;
         }
         //queen
         if(p.getType() == 5){
@@ -127,20 +128,16 @@ public class chess {
                 return true;
             if(sc == ec && Math.abs(sr - er) == 1)
                 return true;
-            return false;
         }
-
-
-
+        return false;
 
     }
 
-    public Piece findPiece(String col, String row){
-        for(i = 0; i < pieces.size(); i++){
-            Piece p = pieces.get(i);
-            if(p.getCol() == col && p.getRow() == row)
-                return p;
-        }
+    public Piece findPiece(int col, int row){
+        Piece p = pieces.get(0);
+        while(p.getCol() != col || p.getRow() != row)
+            p = pieces.get(pieces.indexOf(p) + 1);
+        return p;
     }
 
     public int stringToInt(String n){
