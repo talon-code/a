@@ -90,12 +90,21 @@ public class chess {
 
         //pawn
         if(p.getType() == 1){
+            if(white){
             if(sc - ec == 0 && sr + 1 == er)
                 return true;
             if(sr == 2 && sr + 2 == er)
                 return true;
             if(Math.abs(sc - ec) == 1 && er - sr == 1 && findPiece(ec, er).getType() != 0)
                 return true;
+            } else {
+                if(sc-ec == 0 && sr - 1 == er)
+                    return true;
+                if(sr == 7 && sr - 2 == er)
+                    return true;
+                if(Math.abs(sc - ec) == 1 && er - sr == -1 && findPiece(ec, er).getType() != 0)
+                    return true;
+            }   
         }
 
         //bishop
