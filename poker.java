@@ -23,7 +23,7 @@ public class poker {
 
     public poker(){
         for(int i = 0; i < 50; i++)
-            System.out.println(toInt(""));
+            System.out.println("");
 
         initializeDeck();
         deal();
@@ -31,13 +31,13 @@ public class poker {
         p2askToShow();
         while(oneMoney > 0 && twoMoney > 0){
             if(oneSmall){
-                showValues();
                 blinds();
+                showValues();
                 askOne();
                 askTwo();
             } else {
-                showValues();
                 blinds();
+                showValues();
                 askTwo();
                 askOne();
             }
