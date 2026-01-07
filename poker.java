@@ -22,7 +22,9 @@ public class poker {
     private boolean twoCalls;
 
     public poker(){
-        System.out.println(toInt("10908"));
+        for(int i = 0; i < 50; i++)
+            System.out.println(toInt(""));
+        
         initializeDeck();
         deal();
         p1askToShow();
