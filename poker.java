@@ -24,7 +24,7 @@ public class poker {
     public poker(){
         for(int i = 0; i < 50; i++)
             System.out.println(toInt(""));
-        
+
         initializeDeck();
         deal();
         p1askToShow();
@@ -117,7 +117,7 @@ public class poker {
 
                 oneMoney -= twoInPot - oneInPot + amount;
                 oneInPot = twoInPot + amount;
-                pot = 2 * oneInPot + amount;
+                pot += amount;
                 return "Raise";
             }
             }
